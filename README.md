@@ -2,7 +2,7 @@
 
 This project is meant as start code for projects and exercises given in Flow-1+2 at http://cphbusiness.dk in the Study Program "AP degree in Computer Science"*
 
-*Projects which are expected to use this start-code are projects that require all, or most of the following technologies:*
+*  Projects which are expected to use this start-code are projects that require all, or most of the following technologies:*
  - *JPA and REST*
 - *Testing, including database test*
 - *Testing, including tests of REST-API's*
