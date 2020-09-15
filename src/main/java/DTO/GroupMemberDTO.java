@@ -23,6 +23,10 @@ public class GroupMemberDTO {
         this.favoriteTVSeries = gm.getFavoriteTVSeries();
     }
 
+    public GroupMemberDTO() {
+    }
+    
+
     public String getStudentID() {
         return studentID;
     }
