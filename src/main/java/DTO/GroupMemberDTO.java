@@ -15,12 +15,12 @@ public class GroupMemberDTO {
 
     private String studentID;
     private String name;
-    private String FavoriteTVSeries;
+    private String favoriteTVSeries;
 
     public GroupMemberDTO(GroupMember gm) {
         this.studentID = gm.getStudentID();
         this.name = gm.getName();
-        this.FavoriteTVSeries = gm.getFavoriteTVSeries();
+        this.favoriteTVSeries = gm.getFavoriteTVSeries();
     }
 
     public String getStudentID() {
@@ -40,11 +40,11 @@ public class GroupMemberDTO {
     }
 
     public String getFavoriteTVSeries() {
-        return FavoriteTVSeries;
+        return favoriteTVSeries;
     }
 
     public void setFavoriteTVSeries(String FavoriteTVSeries) {
-        this.FavoriteTVSeries = FavoriteTVSeries;
+        this.favoriteTVSeries = FavoriteTVSeries;
     }
 
 }
