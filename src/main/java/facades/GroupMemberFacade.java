@@ -51,6 +51,7 @@ public class GroupMemberFacade {
     public List<GroupMember> getAllGroupMembers() {
         EntityManager em = getEntityManager();
         try {
+            em.flush();
             TypedQuery<GroupMember> query = em.createNamedQuery("GroupMember.getAllMembers", GroupMember.class);
             return query.getResultList();
         } finally {
