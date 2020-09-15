@@ -39,7 +39,7 @@ public class GroupMemberFacade {
 
     //TODO Remove/Change this before use
     public long getRenameMeCount() {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         try {
             long renameMeCount = (long) em.createQuery("SELECT COUNT(r) FROM GroupMember r").getSingleResult();
             return renameMeCount;
@@ -49,7 +49,7 @@ public class GroupMemberFacade {
     }
 
     public List<GroupMember> getAllGroupMembers() {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         try {
             TypedQuery<GroupMember> query = em.createNamedQuery("GroupMember.getAllMembers", GroupMember.class);
             return query.getResultList();
@@ -59,7 +59,7 @@ public class GroupMemberFacade {
     }
 
     public void populate() {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(new GroupMember("cph-test1", "test1", "test-tv-serie1"));
