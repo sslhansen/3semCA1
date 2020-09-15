@@ -7,9 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
-
 @Entity
-@NamedQuery(name = "RenameMe.deleteAllRows", query = "DELETE from RenameMe")
+@NamedQuery(name = "GroupMember.deleteAllRows", query = "DELETE from GroupMember")
 public class GroupMember implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,19 +24,17 @@ public class GroupMember implements Serializable {
         this.name = name;
         this.FavoriteTVSeries = FavoriteTVSeries;
     }
-    
-        
-    
+
     public GroupMember() {
     }
-        
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }    
+    }
 
     public String getName() {
         return name;
@@ -61,5 +58,5 @@ public class GroupMember implements Serializable {
 
     public void setStudentID(String studentID) {
         this.studentID = studentID;
-    }   
+    }
 }

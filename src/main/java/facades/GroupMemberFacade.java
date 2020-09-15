@@ -48,8 +48,9 @@ public class GroupMemberFacade {
         }
 
     }
-    public List<GroupMember> getGroupNames(){
-        EntityManager em =emf.createEntityManager();
+
+    public List<GroupMember> getGroupMembers() {
+        EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<GroupMember> query = em.createQuery("SELECT e from GroupMember e", GroupMember.class);
             return query.getResultList();
@@ -58,18 +59,18 @@ public class GroupMemberFacade {
         }
     }
 
-//    public void populate() {
-//        EntityManager em = emf.createEntityManager();
-//        try {
-//            em.getTransaction().begin();
-//            em.persist(new GroupMember("String1", "String2"));
-//            em.persist(new GroupMember("String1", "String2"));
-//            em.persist(new GroupMember("String1", "String2"));
-//            em.getTransaction().commit();
-//        } finally {
-//            em.close();
-//        }
-//
-//    }
+    public void populate() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(new GroupMember("cph-test1", "test1", "test-tv-serie1"));
+            em.persist(new GroupMember("cph-test2", "test2", "test-tv-serie2"));
+            em.persist(new GroupMember("cph-test3", "test3", "test-tv-serie3"));
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+
+    }
 
 }
