@@ -2,6 +2,8 @@ package facades;
 
 import utils.EMF_Creator;
 import entities.GroupMember;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -13,18 +15,18 @@ import org.junit.jupiter.api.Test;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class FacadeExampleTest {
+public class GroupMemberFacadeTest {
 
     private static EntityManagerFactory emf;
     private static GroupMemberFacade facade;
 
-    public FacadeExampleTest() {
+    public GroupMemberFacadeTest() {
     }
 
     @BeforeAll
     public static void setUpClass() {
-       emf = EMF_Creator.createEntityManagerFactoryForTest();
-       facade = GroupMemberFacade.getFacadeExample(emf);
+        emf = EMF_Creator.createEntityManagerFactoryForTest();
+        facade = GroupMemberFacade.getFacadeExample(emf);
     }
 
     @AfterAll
@@ -40,9 +42,9 @@ public class FacadeExampleTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("GroupMember.deleteAllRows").executeUpdate();
-            em.persist(new GroupMember("Some txt", "More text", "ccc"));
-            em.persist(new GroupMember("aaa", "bbb", "Even txt"));
-
+            em.persist(new GroupMember("cph-test1", "test1", "test-tv-serie1"));
+            em.persist(new GroupMember("cph-test2", "test2", "test-tv-serie2"));
+            em.persist(new GroupMember("cph-test3", "test3", "test-tv-serie3"));
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -56,8 +58,26 @@ public class FacadeExampleTest {
 
     // TODO: Delete or change this method 
     @Test
-    public void testAFacadeMethod() {
-        assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
+    public void testGetMovieCount() {
+        assertEquals(3, facade.getGroupMemberCount(), "Expects three rows in the database");
+    }
+
+    @Test
+    public void testGetAllGroupMembers() {
+        List<GroupMember> groupMembers = facade.getAllGroupMembers();
+        List<GroupMember> groupMembersExpected = new ArrayList();
+        groupMembersExpected.add(new GroupMember("cph-test1", "test1", "test-tv-serie1"));
+        groupMembersExpected.add(new GroupMember("cph-test2", "test2", "test-tv-serie2"));
+        groupMembersExpected.add(new GroupMember("cph-test3", "test3", "test-tv-serie3"));
+        assertEquals(groupMembers.size(), groupMembersExpected.size());
+    }
+
+    @Test
+    public void testPopulate() {
+        int sizeBefore = facade.getAllGroupMembers().size();
+        facade.populate();
+        int sizeNow = facade.getAllGroupMembers().size();
+        assertEquals((sizeBefore + 3), sizeNow);
     }
 
 }

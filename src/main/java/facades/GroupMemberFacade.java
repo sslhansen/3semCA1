@@ -38,7 +38,7 @@ public class GroupMemberFacade {
     }
 
     //TODO Remove/Change this before use
-    public long getRenameMeCount() {
+    public long getGroupMemberCount() {
         EntityManager em = getEntityManager();
         try {
             long renameMeCount = (long) em.createQuery("SELECT COUNT(r) FROM GroupMember r").getSingleResult();

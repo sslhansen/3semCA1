@@ -34,8 +34,8 @@ public class GroupMemberResource {
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getRenameMeCount() {
-        long count = FACADE.getRenameMeCount();
+    public String getGroupMemberCount() {
+        long count = FACADE.getGroupMemberCount();
         //System.out.println("--------------->"+count);
         return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
