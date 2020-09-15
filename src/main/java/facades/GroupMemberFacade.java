@@ -1,22 +1,23 @@
 package facades;
 
-import entities.RenameMe;
+import entities.GroupMember;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
  * Rename Class to a relevant name Add add relevant facade methods
  */
-public class FacadeExample {
+public class GroupMemberFacade {
 
-    private static FacadeExample instance;
+    private static GroupMemberFacade instance;
     private static EntityManagerFactory emf;
 
     //Private Constructor to ensure Singleton
-    private FacadeExample() {
+    private GroupMemberFacade() {
     }
 
     /**
@@ -24,10 +25,10 @@ public class FacadeExample {
      * @param _emf
      * @return an instance of this facade class.
      */
-    public static FacadeExample getFacadeExample(EntityManagerFactory _emf) {
+    public static GroupMemberFacade getFacadeExample(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
-            instance = new FacadeExample();
+            instance = new GroupMemberFacade();
         }
         return instance;
     }
@@ -47,19 +48,28 @@ public class FacadeExample {
         }
 
     }
-
-    public void populate() {
-        EntityManager em = emf.createEntityManager();
+    public List<GroupMember> getGroupNames(){
+        EntityManager em =emf.createEntityManager();
         try {
-            em.getTransaction().begin();
-            em.persist(new RenameMe("String1", "String2"));
-            em.persist(new RenameMe("String1", "String2"));
-            em.persist(new RenameMe("String1", "String2"));
-            em.getTransaction().commit();
+            TypedQuery<GroupMember> query = em.createQuery("SELECT e from GroupMember e", GroupMember.class);
+            return query.getResultList();
         } finally {
             em.close();
         }
-
     }
+
+//    public void populate() {
+//        EntityManager em = emf.createEntityManager();
+//        try {
+//            em.getTransaction().begin();
+//            em.persist(new GroupMember("String1", "String2"));
+//            em.persist(new GroupMember("String1", "String2"));
+//            em.persist(new GroupMember("String1", "String2"));
+//            em.getTransaction().commit();
+//        } finally {
+//            em.close();
+//        }
+//
+//    }
 
 }
