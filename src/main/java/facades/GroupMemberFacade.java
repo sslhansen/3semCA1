@@ -41,12 +41,11 @@ public class GroupMemberFacade {
     public long getRenameMeCount() {
         EntityManager em = emf.createEntityManager();
         try {
-            long renameMeCount = (long) em.createQuery("SELECT COUNT(r) FROM RenameMe r").getSingleResult();
+            long renameMeCount = (long) em.createQuery("SELECT COUNT(r) FROM GroupMember r").getSingleResult();
             return renameMeCount;
         } finally {
             em.close();
         }
-
     }
 
     public List<GroupMember> getGroupMembers() {
