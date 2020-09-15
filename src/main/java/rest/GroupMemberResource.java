@@ -45,7 +45,7 @@ public class GroupMemberResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllMembers() {
         List<GroupMemberDTO> groupMembersDTO = new ArrayList();
-        List<GroupMember> groupMembers = FACADE.getGroupMembers();
+        List<GroupMember> groupMembers = FACADE.getAllGroupMembers();
         for (GroupMember gm : groupMembers) {
             groupMembersDTO.add(new GroupMemberDTO(gm));
         }
