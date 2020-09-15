@@ -25,7 +25,7 @@ function fetchAllMembers() {
 fetchAllMembers();
 document.getElementById("reloadBtn").addEventListener("click", function(e){
     e.preventDefault();
-    fetchAllMembers();
+    fetchAllMembers;
 });
 
 
