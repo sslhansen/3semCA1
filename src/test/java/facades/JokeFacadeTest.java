@@ -5,8 +5,11 @@
  */
 package facades;
 
+import DTO.JokeDTO;
 import entities.GroupMember;
 import entities.Joke;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -22,9 +25,10 @@ import utils.EMF_Creator;
  * @author Mibsen
  */
 public class JokeFacadeTest {
-    
+
     private static EntityManagerFactory emf;
     private static JokeFacade facade;
+    private static Joke r1, r2, r3;
 
     public JokeFacadeTest() {
     }
@@ -45,12 +49,19 @@ public class JokeFacadeTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        r1 = new Joke("Wanna hear a joke?", "Me");
+        r2 = new Joke("Wanna hear another?", "Multimediedesigner");
+        r3 = new Joke("One last joke", "KEA");
+        em.getTransaction().commit();
+
         try {
             em.getTransaction().begin();
+
             em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
-            em.persist(new Joke("cph-test1", "test1"));
-            em.persist(new Joke("cph-test2", "test2"));
-            em.persist(new Joke("cph-test3", "test3"));
+            em.persist(r1);
+            em.persist(r2);
+            em.persist(r3);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -61,5 +72,22 @@ public class JokeFacadeTest {
     public void tearDown() {
 //        Remove any data after each test was run
     }
-    
+
+    @Test
+    public void testGetAllJokes() {
+        List<JokeDTO> testGetAllJokes = facade.getAllJokes();
+        assertEquals(testGetAllJokes.size(), 3);
+    }
+
+    @Test
+    public void testGetJokeById() {
+        JokeDTO joke = facade.getJokeById(r1.getId());
+        assertEquals("Me", joke.getType());
+    }
+
+    @Test
+    public void testGetRandomJoke() {
+        JokeDTO joke = facade.getRandomJoke();
+        assertTrue(joke.getType().equals("Me") || joke.getType().equals("Multimediedesigner") || joke.getType().equals("KEA"));
+    }
 }
