@@ -72,6 +72,19 @@ public class JokeFacade {
             em.close();
         }
     }
+    public void populate() {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(new Joke("The cattle population is being affected by the pandemic", "They have cowronavirus"));
+            em.persist(new Joke("Whats is the fastest growing country by population", "Ireland, It's Dublin every year"));
+            em.persist(new Joke("My town's population never changes","Every time a girl gets pregnant, a guy leaves town"));
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+
+    }
 
     public JokeDTO getRandomJoke() {
         EntityManager em = getEntityManager();
