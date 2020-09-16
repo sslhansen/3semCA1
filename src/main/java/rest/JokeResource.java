@@ -56,6 +56,7 @@ public class JokeResource {
         JokeDTO joke = FACADE.getRandomJoke();
         return GSON.toJson(joke);
     }
+    
     @Path("id/{id}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
