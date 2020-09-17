@@ -1,7 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package rest;
 
-import DTO.JokeDTO;
-import entities.GroupMember;
+import entities.Car;
 import entities.Joke;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
@@ -27,13 +31,13 @@ import utils.EMF_Creator;
 
 /**
  *
- * @author sebas
+ * @author Sebastian
  */
-public class JokeResourceTest {
+public class CarResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static Joke r1, r2, r3;
+    private static Car r1, r2, r3;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -71,13 +75,13 @@ public class JokeResourceTest {
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        r1 = new Joke("Wanna hear a joke?", "Me");
-        r2 = new Joke("Wanna hear another?", "Multimediedesigner");
-        r3 = new Joke("One last joke", "KEA");
+        r1 = new Car(1995, "Volvo", "model1", 100, "Jens");
+        r2 = new Car(1950, "Toyota", "model2", 120, "Hans");
+        r3 = new Car(2001, "Audi", "model3", 140, "Henrik");
         em.getTransaction().commit();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Car.deleteAllRows").executeUpdate();
             em.persist(r1);
             em.persist(r2);
             em.persist(r3);
@@ -95,7 +99,7 @@ public class JokeResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/joke").then().statusCode(200);
+        given().when().get("/car").then().statusCode(200);
     }
     
     //This test assumes the database contains two rows
@@ -103,7 +107,7 @@ public class JokeResourceTest {
     public void testDummyMsg() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/joke/").then()
+                .get("/car/").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("msg", equalTo("Hello World"));
@@ -111,42 +115,12 @@ public class JokeResourceTest {
     
     
     @Test
-    public void testGetAllJokes() throws Exception {
+    public void testGetAllCars() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/joke/all").then()
+                .get("/car/all").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("type", hasItems("Me", "Multimediedesigner", "KEA"));
+                .body("make", hasItems("Volvo", "Toyota", "Audi"));
     }
-    
-    
-    @Test
-    public void testFindJokeById(){
-        given()
-        .contentType("application/json")
-        .get("/joke/id/" + r2.getId()).then()
-        .assertThat()
-        .statusCode(HttpStatus.OK_200.getStatusCode())
-        .body("type", equalTo(r2.getType()));
-    }
-    
-    @Test
-    public void testGetRandomJokeById(){
-        given()
-        .contentType("application/json")
-        .get("/joke/random").then()
-        .assertThat()
-        .statusCode(HttpStatus.OK_200.getStatusCode())
-        .body("type", Matchers.any(String.class));
-        
-        
-    }
-    
-    
-    
-    
-    
-    
-
 }

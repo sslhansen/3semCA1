@@ -6,7 +6,9 @@
 package facades;
 
 import DTO.CarDTO;
+import DTO.JokeDTO;
 import entities.Car;
+import entities.Joke;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
