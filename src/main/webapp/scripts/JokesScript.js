@@ -1,5 +1,5 @@
 function getTableHeader() {
-    return "<thead><tr><th scope=\"col\">Name</th><th scope=\"col\">Student ID</th><th scope=\"col\">Favorit TV-series</th></tr></thead><tbody>";
+    return "<thead><tr><th scope=\"col\">Id</th><th scope=\"col\">JokeLine</th><th scope=\"col\">Type</th></tr></thead><tbody>";
 }
 
 function getTableRow(joke) {
