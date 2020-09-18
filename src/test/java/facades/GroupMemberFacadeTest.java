@@ -77,7 +77,7 @@ public class GroupMemberFacadeTest {
         int sizeBefore = facade.getAllGroupMembers().size();
         facade.populate();
         int sizeNow = facade.getAllGroupMembers().size();
-        assertEquals((sizeBefore + 3), sizeNow);
+        assertEquals((sizeBefore + 4), sizeNow);
     }
 
 }

@@ -55,9 +55,10 @@ public class GroupMemberFacade {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(new GroupMember("cph-test1", "test1", "test-tv-serie1"));
-            em.persist(new GroupMember("cph-test2", "test2", "test-tv-serie2"));
-            em.persist(new GroupMember("cph-test3", "test3", "test-tv-serie3"));
+            em.persist(new GroupMember("cph-mi93", "Michael Christian Ibsen", "Sex and the City S2"));
+            em.persist(new GroupMember("cph-rg86", "Rasmus Grønbæk", "Hannah Montanna"));
+            em.persist(new GroupMember("cph-sb287", "Sebastian James Bentley", "Vampire Diaries"));
+            em.persist(new GroupMember("cph-sh499", "Sebastian Steen-Lundby Hansen", "Teen Wolf"));
             em.getTransaction().commit();
         } finally {
             em.close();
