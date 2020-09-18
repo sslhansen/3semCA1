@@ -92,7 +92,7 @@ function filterCarsByPrice() {
                 let carTable = document.getElementById("carAllTable");
                 let result = "";
                 let maxPrice = document.getElementById("maxPrice").value;
-                data.filter(n => n.price < maxPrice);
+                data = data.filter(n => n.price < maxPrice);
                 data.forEach((x) => {
                     result += getTableRow(x)
                 });
