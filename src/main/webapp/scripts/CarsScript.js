@@ -9,7 +9,7 @@ function getTableRow(car) {
 function fetchAllCars() {
     let url = "https://svendbentsballonshow.dk/ca1/api/car/all";
     fetch(url)
-            .then(res => res.json()) //in flow1, just do it
+            .then(res => res.json())
             .then(data => {
                 let carTable = document.getElementById("carAllTable");
                 let result = "";
@@ -25,11 +25,11 @@ fetchAllCars()
 function sortAllCars() {
     let url = "https://svendbentsballonshow.dk/ca1/api/car/all";
     fetch(url)
-            .then(res => res.json()) //in flow1, just do it
+            .then(res => res.json())
             .then(data => {
                 let carTable = document.getElementById("carAllTable");
                 let result = "";
-                data.sort();
+                data.sort((a, b) => (a.year > b.year) ? 1 : -1)
                 data.forEach((x) => {
                     result += getTableRow(x)
                 });

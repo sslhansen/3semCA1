@@ -15,14 +15,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-//Todo Remove or change relevant parts before ACTUAL use
 @Path("joke")
 public class JokeResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
 
-    //An alternative way to get the EntityManagerFactory, whithout having to type the details all over the code
-    //EMF = EMF_Creator.createEntityManagerFactory(DbSelector.DEV, Strategy.CREATE);
     private static final JokeFacade FACADE = JokeFacade.getFacadeExample(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
@@ -45,8 +42,7 @@ public class JokeResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String populate() {
         FACADE.populate();
-        //System.out.println("--------------->"+count);
-        return "added entries to db";  //Done manually so no need for a DTO
+        return "added entries to db";
     }
     
     @Path("random")

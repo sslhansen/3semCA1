@@ -9,7 +9,7 @@ function getTableRow(joke) {
 function fetchAllJokes() {
     let url = "https://svendbentsballonshow.dk/ca1/api/joke/all";
     fetch(url)
-            .then(res => res.json()) //in flow1, just do it
+            .then(res => res.json())
             .then(data => {
                 let jokeTable = document.getElementById("jokeAllTable");
                 let result = "";
@@ -25,7 +25,7 @@ function fetchJokeById() {
     id = document.getElementById("idJokeText").value;
     let url = `https://svendbentsballonshow.dk/ca1/api/joke/id/${id}`;
     fetch(url)
-            .then(res => res.json()) //in flow1, just do it
+            .then(res => res.json())
             .then(data => {
                 let jokeIdTable = document.getElementById("jokeIdTable");
                 let result = "";
@@ -38,7 +38,7 @@ function fetchJokeById() {
 function fetchRandomJoke() {
     let url = "https://svendbentsballonshow.dk/ca1/api/joke/random";
     fetch(url)
-            .then(res => res.json()) //in flow1, just do it
+            .then(res => res.json())
             .then(data => {
                 let jokeRandomTable = document.getElementById("jokeRandomTable");
                 let result = "";

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package facades;
 
 import DTO.JokeDTO;
@@ -15,10 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * @author Mibsen
- */
+
 public class JokeFacade {
 
     private static JokeFacade instance;
@@ -28,11 +20,6 @@ public class JokeFacade {
     private JokeFacade() {
     }
 
-    /**
-     *
-     * @param _emf
-     * @return an instance of this facade class.
-     */
     public static JokeFacade getFacadeExample(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;

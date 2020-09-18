@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package facades;
 
 import DTO.CarDTO;
@@ -14,10 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * @author Sebastian
- */
 public class CarFacade {
 
     private static CarFacade instance;
@@ -27,11 +18,6 @@ public class CarFacade {
     private CarFacade() {
     }
 
-    /**
-     *
-     * @param _emf
-     * @return an instance of this facade class.
-     */
     public static CarFacade getFacadeExample(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
@@ -61,9 +47,11 @@ public class CarFacade {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(new Car(1992, "test1", "test1", 10000, "john"));
-            em.persist(new Car(2012, "test2", "test2", 20000, "michael"));
-            em.persist(new Car(1993, "test3", "test3", 30000, "svend"));
+            em.persist(new Car(1997, "Ford", "E350", 3000, "John"));
+            em.persist(new Car(1999, "Chevy", "Venture", 4900, "Michael"));
+            em.persist(new Car(2000, "Chevy", "Venture", 5000, "Terkel"));
+            em.persist(new Car(1996, "Jeep", "Grand Cherokee", 4799, "Svend"));
+            em.persist(new Car(2005, "Volvo", "V70", 44799, "Svend-Bo"));
             em.getTransaction().commit();
         } finally {
             em.close();

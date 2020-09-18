@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entities;
 
 import java.io.Serializable;
@@ -13,10 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-/**
- *
- * @author Mibsen
- */
 @Entity
 @NamedQueries({
 @NamedQuery(name = "Joke.deleteAllRows", query = "DELETE from Joke"),

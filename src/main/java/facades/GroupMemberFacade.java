@@ -7,10 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * Rename Class to a relevant name Add add relevant facade methods
- */
 public class GroupMemberFacade {
 
     private static GroupMemberFacade instance;
@@ -20,11 +16,6 @@ public class GroupMemberFacade {
     private GroupMemberFacade() {
     }
 
-    /**
-     *
-     * @param _emf
-     * @return an instance of this facade class.
-     */
     public static GroupMemberFacade getFacadeExample(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
@@ -37,7 +28,6 @@ public class GroupMemberFacade {
         return emf.createEntityManager();
     }
 
-    //TODO Remove/Change this before use
     public long getGroupMemberCount() {
         EntityManager em = getEntityManager();
         try {

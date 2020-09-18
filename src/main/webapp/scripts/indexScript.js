@@ -11,7 +11,7 @@ function getTableRow(grpMember) {
 function fetchAllMembers() {
     let url = "https://svendbentsballonshow.dk/ca1/api/groupmembers/all";
     fetch(url)
-            .then(res => res.json()) //in flow1, just do it
+            .then(res => res.json())
             .then(data => {
                 let memberTable = document.getElementById("memberTable");
                 let result = "";
