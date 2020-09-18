@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Cars For Sale</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -10,8 +10,14 @@
         <div style="float: left; width: 30%;">
             <h2>All cars</h2>
             <p id="carAllTable"></p>
-            <button id="carsSortBtn" type="button">Sort Cars</button>
+            <button id="carsSortYearBtn" type="button">Sort Cars by year</button><br>
+            <button id="carsSortMakeBtn" type="button">Sort Cars by make</button><br>
+            <button id="carsSortModelBtn" type="button">Sort Cars by model</button><br>
+            <button id="carsSortPriceBtn" type="button">Sort Cars by price</button><br>
 
+            <input type="text" id="maxPrice">
+            <button id="filterPriceBtn" type="button">Filter BY price</button><br>
+            
             <script src="../scripts/CarsScript.js" async defer></script>
             
             <a href="https://svendbentsballonshow.dk/ca1/">
